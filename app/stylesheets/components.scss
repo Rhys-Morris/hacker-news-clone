@@ -49,6 +49,18 @@
 
         margin-right: 1rem;
     }
+
+    &__theme {
+        font-size: 3rem;
+        cursor: pointer;
+        padding: .5rem;
+        border: 2px solid transparent;
+        transition: .3s all;
+
+        &:hover {
+            border: 2px solid black;
+        }
+    }
 }
 
 .loading {

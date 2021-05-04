@@ -60,6 +60,16 @@ body {
   font-size: 2rem;
   margin-right: 1rem;
 }
+.nav__theme {
+  font-size: 3rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  transition: 0.3s all;
+}
+.nav__theme:hover {
+  border: 2px solid black;
+}
 
 .loading {
   border: 16px solid black;
