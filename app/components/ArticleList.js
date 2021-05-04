@@ -1,6 +1,7 @@
 import React from "react";
 import ArticleCard from "./ArticleCard.js";
 import { fetchData } from "../utils/api.js";
+import Loading from "./Loading.js";
 
 export default class Top extends React.Component {
   state = {
@@ -28,19 +29,20 @@ export default class Top extends React.Component {
   render() {
     const { articles, loading } = this.state;
 
-    if (loading) {
-      return <div>Loading</div>;
-    }
-
     return (
       <React.Fragment>
-        <ul className="articles">
-          {articles.map((article) => (
-            <li key={article} className="articles__item">
-              <ArticleCard id={article} />
-            </li>
-          ))}
-        </ul>
+        {/* Loading */}
+        {loading && <Loading />}
+        {/* Loaded */}
+        {!loading && (
+          <ul className="articles">
+            {articles.map((article) => (
+              <li key={article} className="articles__item">
+                <ArticleCard id={article} />
+              </li>
+            ))}
+          </ul>
+        )}
       </React.Fragment>
     );
   }
