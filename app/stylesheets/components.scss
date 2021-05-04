@@ -6,3 +6,21 @@
         margin: 2rem 0;
     }
 }
+
+.article-card {
+    &__title {
+        font-weight: bold;
+        color: rgb(189,54,39);
+        font-size: 1.8rem;
+        margin-bottom: .5rem;
+    }
+
+    &__byline {
+        color: rgb(149, 149, 149);
+
+        & .underline {
+            color: black;
+            text-decoration: underline;
+        }
+    }
+}

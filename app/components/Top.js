@@ -1,5 +1,6 @@
 import React from "react";
-import { fetchTopArticles } from "../utils/api.js";
+import ArticleCard from "./ArticleCard.js";
+import { fetchData } from "../utils/api.js";
 
 export default class Top extends React.Component {
   state = {
@@ -8,10 +9,10 @@ export default class Top extends React.Component {
 
   componentDidMount() {
     (async () => {
-      const data = await fetchTopArticles(
+      const articles = await fetchData(
         "https://hacker-news.firebaseio.com/v0/topstories.json?limit=20"
       );
-      const topFifty = data.slice(0, 50);
+      const topFifty = articles.slice(0, 50);
       this.setState({
         articles: topFifty,
       });
@@ -30,7 +31,7 @@ export default class Top extends React.Component {
         <ul className="articles">
           {articles.map((article) => (
             <li key={article} className="articles__item">
-              {article}
+              <ArticleCard id={article} />
             </li>
           ))}
         </ul>

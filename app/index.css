@@ -11,12 +11,30 @@ html {
   color: red;
 }
 
+body {
+  font-size: 1.6rem;
+}
+
 .articles {
   display: flex;
   flex-direction: column;
 }
 .articles__item {
   margin: 2rem 0;
+}
+
+.article-card__title {
+  font-weight: bold;
+  color: #bd3627;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+.article-card__byline {
+  color: #959595;
+}
+.article-card__byline .underline {
+  color: black;
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=index.css.map */
