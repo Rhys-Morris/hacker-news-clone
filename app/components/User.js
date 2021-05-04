@@ -4,6 +4,7 @@ import { fetchData } from "../utils/api";
 import { formatTimestamp } from "../utils/helpers.js";
 import { ThemeConsumer } from "../contexts/theme";
 import ArticleCard from "./ArticleCard";
+import Loading from "./Loading";
 
 export default class User extends React.Component {
   state = {
@@ -45,6 +46,7 @@ export default class User extends React.Component {
     const { user, posts, loadingPosts } = this.state;
     return (
       <React.Fragment>
+        {loadingPosts && <Loading />}
         {!loadingPosts && (
           <ThemeConsumer>
             {({ theme }) => (
