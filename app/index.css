@@ -11,4 +11,12 @@ html {
   color: red;
 }
 
+.articles {
+  display: flex;
+  flex-direction: column;
+}
+.articles__item {
+  margin: 2rem 0;
+}
+
 /*# sourceMappingURL=index.css.map */

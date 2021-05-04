@@ -1,0 +1,8 @@
+.articles {
+    display: flex;
+    flex-direction: column;
+
+    &__item {
+        margin: 2rem 0;
+    }
+}

@@ -19,11 +19,22 @@ export default class Top extends React.Component {
   }
 
   render() {
-    console.log(this.state.articles);
+    const { articles } = this.state;
+
+    if (!articles) {
+      return <div>Loading</div>;
+    }
+
     return (
-      <div>
-        <h2>Rendered Top</h2>
-      </div>
+      <React.Fragment>
+        <ul className="articles">
+          {articles.map((article) => (
+            <li key={article} className="articles__item">
+              {article}
+            </li>
+          ))}
+        </ul>
+      </React.Fragment>
     );
   }
 }
