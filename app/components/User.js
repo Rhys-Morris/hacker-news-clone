@@ -3,6 +3,7 @@ import queryString from "query-string";
 import { fetchData } from "../utils/api";
 import { formatTimestamp } from "../utils/helpers.js";
 import { ThemeConsumer } from "../contexts/theme";
+import ArticleCard from "./ArticleCard";
 
 export default class User extends React.Component {
   state = {
@@ -19,11 +20,23 @@ export default class User extends React.Component {
         `https://hacker-news.firebaseio.com/v0/user/${id}.json`
       );
       const recentPosts = data.submitted.slice(0, 50);
+
+      let converted = await Promise.all(
+        recentPosts.map(async (post) => {
+          const fetched = await fetchData(
+            `https://hacker-news.firebaseio.com/v0/item/${post}.json`
+          );
+          return fetched;
+        })
+      );
+      converted = converted.filter((post) => !post.deleted && post.title);
+      console.log(converted);
+
       data["username"] = id;
       console.log(data);
       this.setState({
         user: data,
-        posts: recentPosts,
+        posts: converted,
         loadingPosts: false,
       });
     })();
@@ -50,11 +63,18 @@ export default class User extends React.Component {
                 </div>
 
                 {posts && (
-                  <ul>
-                    {posts.map((post) => (
-                      <li key={post}>${post}</li>
-                    ))}
-                  </ul>
+                  <React.Fragment>
+                    <h3 className={`user__recent-posts ${theme}`}>
+                      Recent Posts
+                    </h3>
+                    <ul className="articles">
+                      {posts.map((post) => (
+                        <li className="articles__item" key={post.id}>
+                          <ArticleCard article={post} />
+                        </li>
+                      ))}
+                    </ul>
+                  </React.Fragment>
                 )}
               </React.Fragment>
             )}

@@ -13,7 +13,6 @@
     display: flex;
     flex-direction: column;
     list-style: none;
-    margin-top: 5rem;
 
     &__item {
         margin: 1.5rem 0;
@@ -31,7 +30,8 @@
 
     &__byline {
         color: rgb(149, 149, 149);
-        margin-top: 1rem;
+        padding-top: .8rem;
+        display: inline-block;
 
         &.dark .underline {
             color: #eee;
@@ -45,6 +45,10 @@
                 color: #eee;
             }
         }
+
+        &__author {
+            margin-right: .4rem;
+        }
     }
 }
 
@@ -54,6 +58,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 5rem;
 
     &__link {
         text-decoration: none;
@@ -90,7 +95,7 @@
 .user {
     &__username {
         padding-left: 2rem;
-        font-size: 2.4rem;
+        font-size: 3.4rem;
         margin-bottom: 1rem;
 
         &.dark {
@@ -104,24 +109,33 @@
             color: #eee;
         }
     }
+
+    &__recent-posts {
+        font-size: 2.4rem;
+        margin: 5rem 0 1rem 0;
+
+        &.dark {
+            color:#eee;
+        }
+    }
 }
 
 .loading {
-    border: 16px solid black; 
-    border-top: 16px solid rgb(189,54,39); 
+    border: 12px solid black; 
+    border-top: 12px solid rgb(189,54,39); 
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     animation: spin 1s linear infinite;
 
     &.dark {
-        border: 16px solid #444; 
-        border-top: 16px solid rgb(189,54,39); 
+        border: 12px solid #444; 
+        border-top: 12px solid rgb(189,54,39); 
     }
 
     &-div {
         align-self: center;
-        margin-top: 20rem;
+        margin-top: 10rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -132,7 +146,7 @@
             margin-top: 4rem;
             color: black;
             font-weight: 300;
-            font-size: 3rem;
+            font-size: 2.4rem;
         }
 
         & > p.dark {

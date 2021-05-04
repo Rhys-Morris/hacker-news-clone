@@ -6,27 +6,12 @@ import { ThemeConsumer } from "../contexts/theme.js";
 import { Link } from "react-router-dom";
 
 export default class ArticleCard extends React.Component {
-  state = {
-    article: null,
-  };
-
-  componentDidMount() {
-    (async () => {
-      const data = await fetchData(
-        `https://hacker-news.firebaseio.com/v0/item/${this.props.id}.json`
-      );
-      this.setState({
-        article: data,
-      });
-    })();
-  }
-
   static propTypes = {
-    id: PropTypes.number.isRequired,
+    article: PropTypes.object.isRequired,
   };
 
   createMarkup() {
-    const { article } = this.state;
+    const { article } = this.props;
     return {
       __html: `
          on ${formatTimestamp(article.time)} with <span class="underline">${
@@ -39,21 +24,21 @@ export default class ArticleCard extends React.Component {
   }
 
   render() {
-    return this.state.article ? (
+    return this.props.article ? (
       <ThemeConsumer>
         {({ theme }) => (
           <div className="article-card">
-            <a href={this.state.article.url} className="article-card__title">
-              {this.state.article.title}
+            <a href={this.props.article.url} className="article-card__title">
+              {this.props.article.title}
             </a>
             <br />
             <span className={`article-card__byline ${theme}`}>
               {"by "}
               <Link
-                to={`/user?id=${this.state.article.by}`}
-                className="underline"
+                to={`/user?id=${this.props.article.by}`}
+                className="underline article-card__byline__author"
               >
-                {this.state.article.by}
+                {`${this.props.article.by}`}
               </Link>
             </span>
             <span
