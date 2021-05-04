@@ -10,41 +10,37 @@ export default class ArticleCard extends React.Component {
     article: PropTypes.object.isRequired,
   };
 
-  createMarkup() {
-    const { article } = this.props;
-    return {
-      __html: `
-         on ${formatTimestamp(article.time)} with <span class="underline">${
-        article.kids ? article.kids.length : "0"
-      }</span> comment${
-        (article.kids && article.kids.length !== 1) || !article.kids ? "s" : ""
-      }
-    `,
-    };
-  }
-
   render() {
-    return this.props.article ? (
+    const { article } = this.props;
+    console.log(article);
+    return article ? (
       <ThemeConsumer>
         {({ theme }) => (
           <div className="article-card">
-            <a href={this.props.article.url} className="article-card__title">
-              {this.props.article.title}
+            <a href={article.url} className="article-card__title">
+              {article.title}
             </a>
             <br />
             <span className={`article-card__byline ${theme}`}>
               {"by "}
               <Link
-                to={`/user?id=${this.props.article.by}`}
+                to={`/user?id=${article.by}`}
                 className="underline article-card__byline__author"
               >
-                {`${this.props.article.by}`}
+                {`${article.by}`}
               </Link>
             </span>
-            <span
-              className={`article-card__byline ${theme}`}
-              dangerouslySetInnerHTML={this.createMarkup()}
-            ></span>
+            <span className={`article-card__byline ${theme}`}>
+              {`on ${formatTimestamp(article.time)} with `}
+              <Link to={`/post?id=${article.id}`} className="underline">
+                {`${article.kids ? article.kids.length : "0"}`}
+              </Link>
+              {` comment${
+                (article.kids && article.kids.length !== 1) || !article.kids
+                  ? "s"
+                  : ""
+              }`}
+            </span>
           </div>
         )}
       </ThemeConsumer>

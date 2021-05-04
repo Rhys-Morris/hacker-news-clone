@@ -4,6 +4,7 @@ import "./index.css";
 import ArticleList from "./components/ArticleList.js";
 import Nav from "./components/Nav.js";
 import User from "./components/User.js";
+import Post from "./components/Post.js";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { ThemeProvider } from "./contexts/theme.js";
 
@@ -25,6 +26,7 @@ class App extends React.Component {
             <Route exact path="/" component={ArticleList} />
             <Route path="/new" component={ArticleList} />
             <Route path="/user" component={User} />
+            <Route path="/post" component={Post} />
           </div>
         </ThemeProvider>
       </Router>
