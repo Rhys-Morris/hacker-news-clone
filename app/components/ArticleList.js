@@ -5,24 +5,30 @@ import { fetchData } from "../utils/api.js";
 export default class Top extends React.Component {
   state = {
     articles: null,
+    loading: true,
   };
 
   componentDidMount() {
+    // Check route - if home render top stories, if /new render new stories
+    const content =
+      this.props.location.pathname === "/" ? "topstories" : "newstories";
+
     (async () => {
       const articles = await fetchData(
-        "https://hacker-news.firebaseio.com/v0/topstories.json?limit=20"
+        `https://hacker-news.firebaseio.com/v0/${content}.json?limit=20`
       );
       const topFifty = articles.slice(0, 50);
       this.setState({
         articles: topFifty,
+        loading: false,
       });
     })();
   }
 
   render() {
-    const { articles } = this.state;
+    const { articles, loading } = this.state;
 
-    if (!articles) {
+    if (loading) {
       return <div>Loading</div>;
     }
 
