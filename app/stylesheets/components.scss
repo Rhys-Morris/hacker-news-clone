@@ -87,6 +87,25 @@
     }
 }
 
+.user {
+    &__username {
+        padding-left: 2rem;
+        font-size: 2.4rem;
+        margin-bottom: 1rem;
+
+        &.dark {
+            color: rgb(189,54,39);
+        }
+    }
+
+    &__details {
+
+        &.dark {
+            color: #eee;
+        }
+    }
+}
+
 .loading {
     border: 16px solid black; 
     border-top: 16px solid rgb(189,54,39); 
@@ -129,4 +148,8 @@
     100% { 
       transform: rotate(360deg); 
     }
+  }
+
+  .bold {
+      font-weight: bolder;
   }

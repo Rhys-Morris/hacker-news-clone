@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { fetchData, formatTimestamp } from "../utils/api";
-import { ThemeConsumer } from "../contexts/theme";
+import { fetchData } from "../utils/api.js";
+import { formatTimestamp } from "../utils/helpers.js";
+import { ThemeConsumer } from "../contexts/theme.js";
 import { Link } from "react-router-dom";
 
 export default class ArticleCard extends React.Component {
@@ -17,7 +18,6 @@ export default class ArticleCard extends React.Component {
       this.setState({
         article: data,
       });
-      console.log(data);
     })();
   }
 

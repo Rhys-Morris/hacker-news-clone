@@ -8,7 +8,7 @@ html {
   font-size: 62.5%;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
-  color: red;
+  color: #111;
 }
 
 body {
@@ -88,6 +88,18 @@ body {
   border: 2px solid #eee;
 }
 
+.user__username {
+  padding-left: 2rem;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+}
+.user__username.dark {
+  color: #bd3627;
+}
+.user__details.dark {
+  color: #eee;
+}
+
 .loading {
   border: 16px solid black;
   border-top: 16px solid #bd3627;
@@ -126,6 +138,9 @@ body {
   100% {
     transform: rotate(360deg);
   }
+}
+.bold {
+  font-weight: bolder;
 }
 
 /*# sourceMappingURL=index.css.map */
