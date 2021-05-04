@@ -32,17 +32,19 @@ body {
   margin-top: 5rem;
 }
 .articles__item {
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
 .article-card__title {
   font-weight: bold;
   color: #bd3627;
   font-size: 1.8rem;
-  margin-bottom: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
 }
 .article-card__byline {
   color: #959595;
+  margin-top: 1rem;
 }
 .article-card__byline.dark .underline {
   color: #eee;
@@ -90,8 +92,8 @@ body {
   border: 16px solid black;
   border-top: 16px solid #bd3627;
   border-radius: 50%;
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   animation: spin 1s linear infinite;
 }
 .loading.dark {

@@ -16,6 +16,7 @@ export default class ArticleCard extends React.Component {
       this.setState({
         article: data,
       });
+      console.log(data);
     })();
   }
 
@@ -43,7 +44,9 @@ export default class ArticleCard extends React.Component {
       <ThemeConsumer>
         {({ theme }) => (
           <div className="article-card">
-            <h4 className="article-card__title">{this.state.article.title}</h4>
+            <a href={this.state.article.url} className="article-card__title">
+              {this.state.article.title}
+            </a>
             <p
               className={`article-card__byline ${theme}`}
               dangerouslySetInnerHTML={this.createMarkup()}

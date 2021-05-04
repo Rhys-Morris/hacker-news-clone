@@ -16,7 +16,7 @@
     margin-top: 5rem;
 
     &__item {
-        margin: 2rem 0;
+        margin: 1.5rem 0;
     }
 }
 
@@ -25,11 +25,13 @@
         font-weight: bold;
         color: rgb(189,54,39);
         font-size: 1.8rem;
-        margin-bottom: .5rem;
+        text-decoration: none;
+        cursor: pointer;
     }
 
     &__byline {
         color: rgb(149, 149, 149);
+        margin-top: 1rem;
 
         &.dark .underline {
             color: #eee;
@@ -89,8 +91,8 @@
     border: 16px solid black; 
     border-top: 16px solid rgb(189,54,39); 
     border-radius: 50%;
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     animation: spin 1s linear infinite;
 
     &.dark {
