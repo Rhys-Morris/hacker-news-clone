@@ -2,7 +2,11 @@
     display: flex;
     flex-direction: column;
     padding: 10rem 20rem;
-    min-height: 80vh;
+    min-height: 100vh;
+
+    &.dark {
+        background-color: #111;
+    }
 }
 
 .articles {
@@ -27,9 +31,17 @@
     &__byline {
         color: rgb(149, 149, 149);
 
+        &.dark .underline {
+            color: #eee;
+        }
+
         & .underline {
             color: black;
             text-decoration: underline;
+
+            &.dark {
+                color: #eee;
+            }
         }
     }
 }
@@ -48,6 +60,10 @@
         font-size: 2rem;
 
         margin-right: 1rem;
+
+        &.dark {
+            color: #eee;
+        }
     }
 
     &__theme {
@@ -60,6 +76,12 @@
         &:hover {
             border: 2px solid black;
         }
+
+        &.dark {
+            &:hover {
+                border: 2px solid #eee;
+            }
+        }
     }
 }
 
@@ -70,6 +92,11 @@
     width: 160px;
     height: 160px;
     animation: spin 1s linear infinite;
+
+    &.dark {
+        border: 16px solid #444; 
+        border-top: 16px solid rgb(189,54,39); 
+    }
 
     &-div {
         align-self: center;
@@ -85,7 +112,10 @@
             color: black;
             font-weight: 300;
             font-size: 3rem;
-            
+        }
+
+        & > p.dark {
+            color: #eee;
         }
     }
   }

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { fetchData, formatTimestamp } from "../utils/api";
+import { ThemeConsumer } from "../contexts/theme";
 
 export default class ArticleCard extends React.Component {
   state = {
@@ -39,13 +40,17 @@ export default class ArticleCard extends React.Component {
 
   render() {
     return this.state.article ? (
-      <div className="article-card">
-        <h4 className="article-card__title">{this.state.article.title}</h4>
-        <p
-          className="article-card__byline"
-          dangerouslySetInnerHTML={this.createMarkup()}
-        ></p>
-      </div>
+      <ThemeConsumer>
+        {({ theme }) => (
+          <div className="article-card">
+            <h4 className="article-card__title">{this.state.article.title}</h4>
+            <p
+              className={`article-card__byline ${theme}`}
+              dangerouslySetInnerHTML={this.createMarkup()}
+            ></p>
+          </div>
+        )}
+      </ThemeConsumer>
     ) : null;
   }
 }

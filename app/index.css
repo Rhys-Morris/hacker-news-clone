@@ -19,7 +19,10 @@ body {
   display: flex;
   flex-direction: column;
   padding: 10rem 20rem;
-  min-height: 80vh;
+  min-height: 100vh;
+}
+.container.dark {
+  background-color: #111;
 }
 
 .articles {
@@ -41,9 +44,15 @@ body {
 .article-card__byline {
   color: #959595;
 }
+.article-card__byline.dark .underline {
+  color: #eee;
+}
 .article-card__byline .underline {
   color: black;
   text-decoration: underline;
+}
+.article-card__byline .underline.dark {
+  color: #eee;
 }
 
 .nav {
@@ -60,6 +69,9 @@ body {
   font-size: 2rem;
   margin-right: 1rem;
 }
+.nav__link.dark {
+  color: #eee;
+}
 .nav__theme {
   font-size: 3rem;
   cursor: pointer;
@@ -70,6 +82,9 @@ body {
 .nav__theme:hover {
   border: 2px solid black;
 }
+.nav__theme.dark:hover {
+  border: 2px solid #eee;
+}
 
 .loading {
   border: 16px solid black;
@@ -78,6 +93,10 @@ body {
   width: 160px;
   height: 160px;
   animation: spin 1s linear infinite;
+}
+.loading.dark {
+  border: 16px solid #444;
+  border-top: 16px solid #bd3627;
 }
 .loading-div {
   align-self: center;
@@ -93,6 +112,9 @@ body {
   color: black;
   font-weight: 300;
   font-size: 3rem;
+}
+.loading-div > p.dark {
+  color: #eee;
 }
 
 @keyframes spin {

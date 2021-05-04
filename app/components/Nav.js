@@ -15,7 +15,7 @@ export default class Nav extends React.Component {
             <div className="nav__link-box">
               <NavLink
                 to="/"
-                className="nav__link"
+                className={`nav__link ${theme}`}
                 exact
                 activeStyle={activeStyle}
               >
@@ -23,13 +23,13 @@ export default class Nav extends React.Component {
               </NavLink>
               <NavLink
                 to="/new"
-                className="nav__link"
+                className={`nav__link ${theme}`}
                 activeStyle={activeStyle}
               >
                 New
               </NavLink>
             </div>
-            <div className="nav__theme" onClick={toggleTheme}>
+            <div className={`nav__theme ${theme}`} onClick={toggleTheme}>
               {theme === "light" ? "🌕" : "🌞"}
             </div>
           </nav>
