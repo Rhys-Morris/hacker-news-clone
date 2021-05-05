@@ -1,13 +1,20 @@
 .container {
     display: flex;
     flex-direction: column;
-    padding: 10rem 20rem;
+    padding: 5rem 15rem;
     min-height: 100vh;
-    max-width: 1600px;
-    min-width: 1600px;
+    max-width: 1500px;
+    min-width: 1500px;
+
+    @media only screen and (max-width: 1700px) {
+        max-width: 90%;
+        min-width: 90%;
+        padding: 5rem 5%;
+    }
 
     &.dark {
         background-color: #111;
+        width: 100%;
     }
 }
 
@@ -71,6 +78,8 @@
 .post {
     &__title {
         color: rgb(189,54,39);
+        font-size: 2.8rem;
+        margin-bottom: .8rem;
     }
     &__comments-list {
         margin-top: 3rem;
@@ -102,6 +111,10 @@
 
     &__text {
         margin-top: 1rem;
+
+        & a {
+            word-wrap: break-word;
+        }
     }
 }
 
@@ -135,11 +148,19 @@
 
         &:hover {
             border: 2px solid black;
+
+            @media only screen and (max-width: 800px) {
+                border: 2px solid transparent;
+            }
         }
 
         &.dark {
             &:hover {
                 border: 2px solid #eee;
+
+                @media only screen and (max-width: 800px) {
+                    border: 2px solid transparent;
+                }
             }
         }
     }

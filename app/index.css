@@ -20,13 +20,21 @@ body {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 10rem 20rem;
+  padding: 5rem 15rem;
   min-height: 100vh;
-  max-width: 1600px;
-  min-width: 1600px;
+  max-width: 1500px;
+  min-width: 1500px;
+}
+@media only screen and (max-width: 1700px) {
+  .container {
+    max-width: 90%;
+    min-width: 90%;
+    padding: 5rem 5%;
+  }
 }
 .container.dark {
   background-color: #111;
+  width: 100%;
 }
 
 .dark-theme {
@@ -80,6 +88,8 @@ body {
 
 .post__title {
   color: #bd3627;
+  font-size: 2.8rem;
+  margin-bottom: 0.8rem;
 }
 .post__comments-list {
   margin-top: 3rem;
@@ -105,6 +115,9 @@ body {
 }
 .comment__text {
   margin-top: 1rem;
+}
+.comment__text a {
+  word-wrap: break-word;
 }
 
 .nav {
@@ -135,8 +148,18 @@ body {
 .nav__theme:hover {
   border: 2px solid black;
 }
+@media only screen and (max-width: 800px) {
+  .nav__theme:hover {
+    border: 2px solid transparent;
+  }
+}
 .nav__theme.dark:hover {
   border: 2px solid #eee;
+}
+@media only screen and (max-width: 800px) {
+  .nav__theme.dark:hover {
+    border: 2px solid transparent;
+  }
 }
 
 .user__username {
