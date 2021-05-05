@@ -41,23 +41,53 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-.article-card__byline {
+
+.byline {
   color: #959595;
   padding-top: 0.8rem;
   display: inline-block;
 }
-.article-card__byline.dark .underline {
+.byline.dark .underline {
   color: #eee;
 }
-.article-card__byline .underline {
+.byline .underline {
   color: black;
   text-decoration: underline;
 }
-.article-card__byline .underline.dark {
+.byline .underline.dark {
   color: #eee;
 }
-.article-card__byline__author {
+.byline__author {
   margin-right: 0.4rem;
+}
+
+.post__title {
+  color: #bd3627;
+}
+.post__comments-list {
+  margin-top: 3rem;
+  list-style: none;
+}
+
+.comment {
+  padding: 1rem;
+  background-color: #efefef;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  line-height: 1.2;
+}
+.comment p {
+  margin: 1.5rem 0;
+}
+.comment.dark {
+  background-color: #333;
+  color: #eee;
+}
+.comment a {
+  color: #bd3627;
+}
+.comment__text {
+  margin-top: 1rem;
 }
 
 .nav {
@@ -100,12 +130,21 @@ body {
 .user__username.dark {
   color: #bd3627;
 }
+.user__about {
+  margin-top: 1.5rem;
+  border-bottom: 1px solid black;
+  padding-bottom: 3rem;
+}
+.user__about.dark {
+  color: #eee;
+  border-bottom: 1px solid #eee;
+}
 .user__details.dark {
   color: #eee;
 }
 .user__recent-posts {
   font-size: 2.4rem;
-  margin: 5rem 0 1rem 0;
+  margin: 2.5rem 0 1rem 0;
 }
 .user__recent-posts.dark {
   color: #eee;

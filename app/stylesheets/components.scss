@@ -27,28 +27,65 @@
         text-decoration: none;
         cursor: pointer;
     }
+}
 
-    &__byline {
-        color: rgb(149, 149, 149);
-        padding-top: .8rem;
-        display: inline-block;
+.byline {
+    color: rgb(149, 149, 149);
+    padding-top: .8rem;
+    display: inline-block;
 
-        &.dark .underline {
+    &.dark .underline {
+        color: #eee;
+    }
+
+    & .underline {
+        color: black;
+        text-decoration: underline;
+
+        &.dark {
             color: #eee;
         }
+    }
 
-        & .underline {
-            color: black;
-            text-decoration: underline;
+    &__author {
+        margin-right: .4rem;
+    }
+}
 
-            &.dark {
-                color: #eee;
-            }
-        }
+.post {
+    &__title {
+        color: rgb(189,54,39);
+    }
+    &__comments-list {
+        margin-top: 3rem;
+        list-style: none;
 
-        &__author {
-            margin-right: .4rem;
-        }
+    }
+}
+
+.comment {
+    padding: 1rem;
+    background-color: #efefef;
+    margin-bottom: 1rem;
+    border-radius: .5rem;
+    line-height: 1.2;
+
+    & p {
+        margin: 1.5rem 0;
+    }
+
+    &.dark {
+        background-color: #333;
+        color: #eee;
+    }
+
+    & a {
+        color: rgb(189,54,39);
+
+    }
+
+    &__text {
+        margin-top: 1rem;
     }
 }
 
@@ -103,6 +140,17 @@
         }
     }
 
+    &__about {
+        margin-top: 1.5rem;
+        border-bottom: 1px solid black;
+        padding-bottom: 3rem;
+
+        &.dark {
+            color: #eee;
+            border-bottom: 1px solid #eee;
+        }
+    }
+
     &__details {
 
         &.dark {
@@ -112,7 +160,7 @@
 
     &__recent-posts {
         font-size: 2.4rem;
-        margin: 5rem 0 1rem 0;
+        margin: 2.5rem 0 1rem 0;
 
         &.dark {
             color:#eee;

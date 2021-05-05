@@ -62,6 +62,7 @@ export default class User extends React.Component {
                     <span className="bold">{` ${user.karma} `}</span>
                     karma
                   </span>
+                  <p className={`user__about ${theme}`}>{user.about}</p>
                 </div>
 
                 {posts && (
