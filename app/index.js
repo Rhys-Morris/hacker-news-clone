@@ -5,7 +5,7 @@ import ArticleList from "./components/ArticleList.js";
 import Nav from "./components/Nav.js";
 import User from "./components/User.js";
 import Post from "./components/Post.js";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ThemeProvider } from "./contexts/theme.js";
 
 class App extends React.Component {
@@ -23,10 +23,19 @@ class App extends React.Component {
         <ThemeProvider value={this.state}>
           <div className={`container ${this.state.theme}`}>
             <Nav />
-            <Route exact path="/" component={ArticleList} />
-            <Route path="/new" component={ArticleList} />
-            <Route path="/user" component={User} />
-            <Route path="/post" component={Post} />
+            <Switch>
+              <Route exact path="/" component={ArticleList} key={1} />
+              <Route exact path="/new" component={ArticleList} key={2} />
+              <Route exact path="/user" component={User} />
+              <Route exact path="/post" component={Post} />
+              <Route
+                render={() => (
+                  <div className={`no-content ${this.state.theme}`}>
+                    Content Not Found
+                  </div>
+                )}
+              />
+            </Switch>
           </div>
         </ThemeProvider>
       </Router>

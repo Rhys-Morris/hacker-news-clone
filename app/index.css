@@ -168,20 +168,6 @@ body {
 .loading-div {
   align-self: center;
   margin-top: 10rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.loading-div > p {
-  text-transform: uppercase;
-  margin-top: 4rem;
-  color: black;
-  font-weight: 300;
-  font-size: 2.4rem;
-}
-.loading-div > p.dark {
-  color: #eee;
 }
 
 @keyframes spin {
@@ -194,6 +180,18 @@ body {
 }
 .bold {
   font-weight: bolder;
+}
+
+.no-content {
+  align-self: center;
+  margin-top: 10rem;
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 300;
+}
+.no-content.dark {
+  color: #eee;
 }
 
 /*# sourceMappingURL=index.css.map */
