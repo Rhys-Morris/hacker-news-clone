@@ -1,7 +1,14 @@
 import regeneratorRuntime from "regenerator-runtime";
 
 export const fetchData = async (url) => {
-  const response = await fetch(url);
-  const data = response.json();
-  return data;
+  try {
+    const response = await fetch(url);
+    if (response.status != 200) {
+      throw new Error("An error occured fetching data");
+    }
+    const data = response.json();
+    return data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
 };

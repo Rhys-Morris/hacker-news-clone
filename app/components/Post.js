@@ -11,6 +11,7 @@ export default class Post extends React.Component {
     loading: true,
     comments: [],
     post: null,
+    error: null,
   };
 
   componentDidMount() {
@@ -43,12 +44,29 @@ export default class Post extends React.Component {
         post: data,
         comments: fetchedComments,
       });
-    })();
+    })().catch((err) => {
+      const errorMessage =
+        err.message === "An error occured fetching data"
+          ? err.message
+          : "An unexpected error occured";
+      this.setState({
+        error: errorMessage,
+        loading: false,
+      });
+    });
   }
 
   render() {
-    const { loading, post, comments } = this.state;
-    console.log(this.state);
+    const { loading, post, comments, error } = this.state;
+
+    if (error) {
+      return (
+        <ThemeConsumer>
+          {({ theme }) => <div className={`error ${theme}`}>{error}</div>}
+        </ThemeConsumer>
+      );
+    }
+
     return (
       <React.Fragment>
         {loading && <Loading />}

@@ -11,6 +11,7 @@ export default class User extends React.Component {
     user: null,
     posts: null,
     loadingPosts: true,
+    error: null,
   };
   componentDidMount() {
     const { location } = this.props;
@@ -31,7 +32,6 @@ export default class User extends React.Component {
         })
       );
       converted = converted.filter((post) => !post.deleted && post.title);
-      console.log(converted);
 
       data["username"] = id;
       console.log(data);
@@ -40,7 +40,16 @@ export default class User extends React.Component {
         posts: converted,
         loadingPosts: false,
       });
-    })();
+    })().catch((err) => {
+      const errorMessage =
+        err.message === "An error occured fetching data"
+          ? err.message
+          : "An unexpected error occured";
+      this.setState({
+        error: errorMessage,
+        loading: false,
+      });
+    });
   }
 
   renderMarkup() {
@@ -49,7 +58,16 @@ export default class User extends React.Component {
   }
 
   render() {
-    const { user, posts, loadingPosts } = this.state;
+    const { user, posts, loadingPosts, error } = this.state;
+
+    if (error) {
+      return (
+        <ThemeConsumer>
+          {({ theme }) => <div className={`error ${theme}`}>{error}</div>}
+        </ThemeConsumer>
+      );
+    }
+
     return (
       <React.Fragment>
         {loadingPosts && <Loading />}
