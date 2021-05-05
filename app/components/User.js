@@ -42,6 +42,12 @@ export default class User extends React.Component {
       });
     })();
   }
+
+  renderMarkup() {
+    const { user } = this.state;
+    return { __html: `${user.about ? user.about : ""}` };
+  }
+
   render() {
     const { user, posts, loadingPosts } = this.state;
     return (
@@ -62,7 +68,10 @@ export default class User extends React.Component {
                     <span className="bold">{` ${user.karma} `}</span>
                     karma
                   </span>
-                  <p className={`user__about ${theme}`}>{user.about}</p>
+                  <p
+                    className={`user__about ${theme}`}
+                    dangerouslySetInnerHTML={this.renderMarkup()}
+                  ></p>
                 </div>
 
                 {posts && (

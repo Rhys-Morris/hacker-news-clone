@@ -15,7 +15,7 @@
     list-style: none;
 
     &__item {
-        margin: 1.5rem 0;
+        margin: 1rem 0;
     }
 }
 
@@ -31,7 +31,7 @@
 
 .byline {
     color: rgb(149, 149, 149);
-    padding-top: .8rem;
+    padding-top: .2rem;
     display: inline-block;
 
     &.dark .underline {
@@ -149,6 +149,10 @@
             color: #eee;
             border-bottom: 1px solid #eee;
         }
+
+        & p {
+            margin: 0.5rem 0;
+        }
     }
 
     &__details {
@@ -169,8 +173,8 @@
 }
 
 .loading {
-    border: 12px solid black; 
-    border-top: 12px solid rgb(189,54,39); 
+    border: 12px solid #dfdfdf; 
+    border-top: 12px solid black; 
     border-radius: 50%;
     width: 80px;
     height: 80px;

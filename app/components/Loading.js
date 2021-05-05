@@ -7,7 +7,6 @@ export default function Loading() {
       {({ theme }) => (
         <div className="loading-div">
           <div className={`loading ${theme}`}></div>
-          <p className={`${theme}`}>Loading</p>
         </div>
       )}
     </ThemeConsumer>

@@ -31,7 +31,7 @@ body {
   list-style: none;
 }
 .articles__item {
-  margin: 1.5rem 0;
+  margin: 1rem 0;
 }
 
 .article-card__title {
@@ -44,7 +44,7 @@ body {
 
 .byline {
   color: #959595;
-  padding-top: 0.8rem;
+  padding-top: 0.2rem;
   display: inline-block;
 }
 .byline.dark .underline {
@@ -139,6 +139,9 @@ body {
   color: #eee;
   border-bottom: 1px solid #eee;
 }
+.user__about p {
+  margin: 0.5rem 0;
+}
 .user__details.dark {
   color: #eee;
 }
@@ -151,8 +154,8 @@ body {
 }
 
 .loading {
-  border: 12px solid black;
-  border-top: 12px solid #bd3627;
+  border: 12px solid #dfdfdf;
+  border-top: 12px solid black;
   border-radius: 50%;
   width: 80px;
   height: 80px;
