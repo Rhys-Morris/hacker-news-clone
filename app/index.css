@@ -13,6 +13,7 @@ html {
   font-family: "Rubik", sans-serif;
   width: 100vw;
   overflow-x: hidden;
+  word-wrap: break-word;
 }
 
 body {
@@ -122,6 +123,14 @@ body {
 }
 .comment__text a {
   word-wrap: break-word;
+}
+
+code {
+  word-wrap: break-word;
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal;
+  margin-bottom: 1.5rem;
 }
 
 .nav {

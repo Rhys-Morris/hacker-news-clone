@@ -119,6 +119,14 @@
     }
 }
 
+code {
+    word-wrap: break-word;
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    margin-bottom: 1.5rem;
+}
+
 .nav {
     width: 100%;
     padding: 2rem 0;
