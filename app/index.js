@@ -23,23 +23,25 @@ class App extends React.Component {
     return (
       <Router>
         <ThemeProvider value={this.state}>
-          <div className={`container ${this.state.theme}`}>
-            <Nav />
-            <React.Suspense fallback={<Loading />}>
-              <Switch>
-                <Route exact path="/" component={ArticleList} key={1} />
-                <Route exact path="/new" component={ArticleList} key={2} />
-                <Route exact path="/user" component={User} />
-                <Route exact path="/post" component={Post} />
-                <Route
-                  render={() => (
-                    <div className={`no-content ${this.state.theme}`}>
-                      Content Not Found
-                    </div>
-                  )}
-                />
-              </Switch>
-            </React.Suspense>
+          <div className={`${this.state.theme}-theme`}>
+            <div className={`container ${this.state.theme}`}>
+              <Nav />
+              <React.Suspense fallback={<Loading />}>
+                <Switch>
+                  <Route exact path="/" component={ArticleList} key={1} />
+                  <Route exact path="/new" component={ArticleList} key={2} />
+                  <Route exact path="/user" component={User} />
+                  <Route exact path="/post" component={Post} />
+                  <Route
+                    render={() => (
+                      <div className={`no-content ${this.state.theme}`}>
+                        Content Not Found
+                      </div>
+                    )}
+                  />
+                </Switch>
+              </React.Suspense>
+            </div>
           </div>
         </ThemeProvider>
       </Router>

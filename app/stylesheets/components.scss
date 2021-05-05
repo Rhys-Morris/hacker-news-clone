@@ -3,11 +3,27 @@
     flex-direction: column;
     padding: 10rem 20rem;
     min-height: 100vh;
+    max-width: 1600px;
+    min-width: 1600px;
 
     &.dark {
         background-color: #111;
     }
 }
+
+.dark-theme {
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.light-theme {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .articles {
     display: flex;
