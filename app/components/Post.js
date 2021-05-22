@@ -4,29 +4,46 @@ import { fetchData } from "../utils/api";
 import Loading from "./Loading";
 import Byline from "./Byline.js";
 import Comment from "./Comment.js";
-import { ThemeConsumer } from "../contexts/theme";
+import ThemeContext from "../contexts/theme";
 
-export default class Post extends React.Component {
-  state = {
+const postReducer = (state, action) => {
+  if (action.type === "success") {
+    return {
+      error: null,
+      loading: false,
+      post: action.post,
+      comments: action.comments ? action.comments : null,
+    };
+  } else if (action.type === "error") {
+    return {
+      ...state,
+      loading: false,
+      error: action.error,
+    };
+  } else {
+    throw new Error("An unexpected error occurred");
+  }
+};
+
+export default function Post({ location }) {
+  const [state, dispatch] = React.useReducer(postReducer, {
     loading: true,
-    comments: [],
-    post: null,
     error: null,
-  };
+    post: null,
+    comments: null,
+  });
+  const theme = React.useContext(ThemeContext);
+  const { id } = queryString.parse(location.search);
 
-  componentDidMount() {
-    const { id } = queryString.parse(this.props.location.search);
-
+  React.useEffect(() => {
     (async () => {
       const data = await fetchData(
         `https://hacker-news.firebaseio.com/v0/item/${id}.json`
       );
       const comments = data.kids;
+
       if (!comments) {
-        this.setState({
-          loading: false,
-          post: data,
-        });
+        dispatch({ type: "success", post: data });
         return;
       }
 
@@ -39,61 +56,44 @@ export default class Post extends React.Component {
         })
       );
       fetchedComments = fetchedComments.filter((comment) => !comment.deleted);
-      this.setState({
-        loading: false,
-        post: data,
-        comments: fetchedComments,
-      });
+      dispatch({ type: "success", post: data, comments: fetchedComments });
     })().catch((err) => {
       const errorMessage =
         err.message === "An error occured fetching data"
           ? err.message
           : "An unexpected error occured";
-      this.setState({
-        error: errorMessage,
-        loading: false,
-      });
+      dispatch({ type: "error", error: errorMessage });
     });
+  }, [id]);
+
+  const { loading, post, comments, error } = state;
+
+  if (error) {
+    return <div className={`error ${theme}`}>{error}</div>;
   }
 
-  render() {
-    const { loading, post, comments, error } = this.state;
-
-    if (error) {
-      return (
-        <ThemeConsumer>
-          {({ theme }) => <div className={`error ${theme}`}>{error}</div>}
-        </ThemeConsumer>
-      );
-    }
-
-    return (
-      <React.Fragment>
-        {loading && <Loading />}
-        {!loading && (
-          <ThemeConsumer>
-            {({ theme }) => (
-              <React.Fragment>
-                <div className="post">
-                  <h2 className="post__title">{post.title}</h2>
-                  <Byline post={post} />
-                </div>
-                {comments.length > 0 && (
-                  <React.Fragment>
-                    <ul className="post__comments-list">
-                      {comments.map((comment) => (
-                        <li key={comment.id}>
-                          <Comment comment={comment} />
-                        </li>
-                      ))}
-                    </ul>
-                  </React.Fragment>
-                )}
-              </React.Fragment>
-            )}
-          </ThemeConsumer>
-        )}
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      {loading && <Loading />}
+      {!loading && (
+        <React.Fragment>
+          <div className="post">
+            <h2 className="post__title">{post.title}</h2>
+            <Byline post={post} />
+          </div>
+          {comments.length > 0 && (
+            <React.Fragment>
+              <ul className="post__comments-list">
+                {comments.map((comment) => (
+                  <li key={comment.id}>
+                    <Comment comment={comment} />
+                  </li>
+                ))}
+              </ul>
+            </React.Fragment>
+          )}
+        </React.Fragment>
+      )}
+    </React.Fragment>
+  );
 }

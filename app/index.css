@@ -39,6 +39,9 @@ body {
   background-color: #111;
   width: 100%;
 }
+.container.light {
+  width: 100%;
+}
 
 .dark-theme {
   background-color: #111;

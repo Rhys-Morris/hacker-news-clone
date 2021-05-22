@@ -1,14 +1,11 @@
 import React from "react";
-import { ThemeConsumer } from "../contexts/theme";
+import ThemeContext from "../contexts/theme";
 
 export default function Loading() {
+  const theme = React.useContext(ThemeContext);
   return (
-    <ThemeConsumer>
-      {({ theme }) => (
-        <div className="loading-div">
-          <div className={`loading ${theme}`}></div>
-        </div>
-      )}
-    </ThemeConsumer>
+    <div className="loading-div">
+      <div className={`loading ${theme}`}></div>
+    </div>
   );
 }
